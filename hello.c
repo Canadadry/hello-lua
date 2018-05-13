@@ -14,6 +14,7 @@ static const struct luaL_Reg functions [] = {
 };
 
 int luaopen_hello(lua_State *L) {
-    luaL_register(L, "hello", functions);
+	printf("luaopen_hello\n");
+    luaL_newlib(L, functions);
     return 1;
 }

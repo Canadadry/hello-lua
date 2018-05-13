@@ -1,9 +1,10 @@
 LUA_DIR=/usr/local
 LUA_LIBDIR=$(LUA_DIR)/lib/lua/5.1
-LIBFLAG= -shared -fpic
+LIBFLAG= -fpic -dynamiclib -Wl,-undefined,dynamic_lookup
+CFLAGS= -std=c99
 
 hello.so:	hello.c
-	$(CC) -o hello.so $(LIBFLAG) $(CFLAGS) hello.c -I$(LUA_LIBDIR) -llua
+	$(CC) -o hello.so $(LIBFLAG) $(CFLAGS) hello.c 
 
 clean:
 	$(RM) hello.so
